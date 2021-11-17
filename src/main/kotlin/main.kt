@@ -1,5 +1,7 @@
+
+/*
 import ir_base.*
-import ir_base.data.IndexedData
+import ir_base.data.*
 import jetbrains.datalore.base.json.Arr
 import jetbrains.letsPlot.export.ggsave
 import jetbrains.letsPlot.geom.geomDensity
@@ -64,4 +66,10 @@ fun main(){
     ggsave(p2, "my-plot.png")
 
         */
+}
+
+ */
+
+fun main(){
+
 }

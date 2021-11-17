@@ -8,7 +8,7 @@ class Aes(val name: String) {
         val COLOR = Aes("color")
         val SIZE = Aes("size")
 
-        //val LABEL = Aes("label")
+        val LABEL = Aes("label")
     }
 
     override fun toString(): String = name

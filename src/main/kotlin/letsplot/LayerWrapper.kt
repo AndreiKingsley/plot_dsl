@@ -8,7 +8,7 @@ import jetbrains.letsPlot.intern.layer.GeomOptions
 import jetbrains.letsPlot.intern.layer.LayerBase
 import jetbrains.letsPlot.intern.layer.PosOptions
 import jetbrains.letsPlot.intern.layer.StatOptions
-
+/*
 class LayerWrapper(val layer: Layer) :
     jetbrains.letsPlot.intern.layer.LayerBase(
         data = layer.data,
@@ -38,3 +38,6 @@ fun Layer.assignmentOptions() = Options(
                 (key, value) -> key.name to (value as AssigmentParameter<*>).value
         }.toMap()
 )
+
+
+ */

@@ -6,9 +6,9 @@ import ir_base.scale.Scale
 interface PlotSpec {
     val layers: List<Layer>
 
-    val scales: Map<String, Scale<Any, Any>>
+    val scales: Map<ID, Scale<Any, Any>>
 
-    val posScaleToCoord: Map<String, Coord>
+    val coords: Map<ID, Coord>
 
     //val layoutParameters: TODO (name, size, etc.)
 }

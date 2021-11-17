@@ -1,20 +1,31 @@
 package ir_base.scale
 
 import ir_base.Aes
+import ir_base.ID
 
 interface Scale<RawValue, GeomValue> {
+    val id: ID
 
-    // TODO where grid?
+    // coordinate system pointer
+    val coordID: ID?
 
+    // mark of physical meaning
+    // TODO как связана с GeomValue????
     val aes: Aes?
 
-    val guideSettings: GuideSettings
+    // settings for guide TODO
+    val guideSettings: GuideSettings?
 
-    val limits: Pair<GeomValue?, GeomValue?>?
+    // values out of this limits will not be displayed
+    val rawValuesLimits: Pair<RawValue?, RawValue?>?
+
+    // transform range limits
+    val geomValuesLimits: Pair<GeomValue?, GeomValue?>?
 
     val transform: ((RawValue) -> GeomValue)?
 }
 
+/*
 interface PositionalScale<RawValue, GeomValue>: Scale<RawValue, GeomValue> {
 
     // TODO where grid?
@@ -27,3 +38,6 @@ interface PositionalScale<RawValue, GeomValue>: Scale<RawValue, GeomValue> {
 
     override val transform: ((RawValue) -> GeomValue)?
 }
+
+
+ */

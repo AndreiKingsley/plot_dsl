@@ -1,6 +1,7 @@
 package ir_base
 
-interface Geom   {
-}
+interface Geom
 
 object Point: Geom
+
+object Text: Geom

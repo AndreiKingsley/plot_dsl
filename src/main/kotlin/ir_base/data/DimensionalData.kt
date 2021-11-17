@@ -1,3 +1,4 @@
 package ir_base.data
 
-typealias DimensionalData<Index> = Map<Int, IndexedData<Any, Index>>
+typealias NamedData = Map<String, LinearData<Any>>
+typealias MutableNamedData = MutableMap<String, LinearData<Any>>

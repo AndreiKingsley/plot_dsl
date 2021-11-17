@@ -3,7 +3,7 @@ package ir_base.scale
 interface GuideSettings {
     val guideType: GuideType
 
-    val orientation: Orientation
+    //val orientation: Orientation
 
     val title: String
 

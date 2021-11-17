@@ -1,25 +1,20 @@
 package ir_base
 
-import ir_base.scale.Scale
+import ir_base.data.*
+import ir_base.scale.*
 
 interface Layer {
-    //val data: JointData
-    //val data: Map<String, Any>?
+    // dataset
+    val data: NamedData
 
-    val aesBindings: Map<Aes, BindingParameter>
+    // style attributes e.g. color, size, ... Todo is it AES?
+    val style: Map<String, Any>
 
+    // geom flag
     val geom: Geom
 
-
-    // dataset
-    val data: Map<String, Any>
-
-    // constant values e.g. color, size
-    val styles: Map<String, Any>
-
-    val dataScales: Map<String, Scale<Any, Any>>
-
-    val stylesScales: Map<String, Scale<Any, Any>>
-
+    //scales
+    val dataScales: List<Pair<String, Scale<Any, Any>>>
+    val stylesScales: List<Pair<String, Scale<Any, Any>>>
 
 }

@@ -1,6 +1,6 @@
 package ir_base.data
 
-interface IndexedData<out T, Index> {
-    val indices: List<Index>
-    operator fun get(index: Index): T
+interface LinearData<out T> {
+    val indices: List<Int>
+    operator fun get(index: Int): T
 }

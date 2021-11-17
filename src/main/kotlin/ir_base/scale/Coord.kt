@@ -1,5 +1,7 @@
 package ir_base.scale
 
-interface Coord {
+import ir_base.ID
 
+interface Coord {
+    val id: ID
 }
