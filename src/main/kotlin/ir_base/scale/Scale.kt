@@ -14,13 +14,13 @@ interface Scale<RawValue, GeomValue> {
     val aes: Aes?
 
     // settings for guide TODO
-    val guideSettings: GuideSettings?
+    //val guideSettings: GuideSettings?
 
     // values out of this limits will not be displayed
     val rawValuesLimits: Pair<RawValue?, RawValue?>?
 
     // transform range limits
-    val geomValuesLimits: Pair<GeomValue?, GeomValue?>?
+    ///val geomValuesLimits: Pair<GeomValue?, GeomValue?>?
 
     val transform: ((RawValue) -> GeomValue)?
 }

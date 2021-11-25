@@ -8,6 +8,8 @@ import jetbrains.letsPlot.intern.layer.GeomOptions
 import jetbrains.letsPlot.intern.layer.LayerBase
 import jetbrains.letsPlot.intern.layer.PosOptions
 import jetbrains.letsPlot.intern.layer.StatOptions
+import jetbrains.letsPlot.scale.scaleColorManual
+
 /*
 class LayerWrapper(val layer: Layer) :
     jetbrains.letsPlot.intern.layer.LayerBase(

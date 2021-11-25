@@ -7,8 +7,7 @@ import ir_base.data.NamedData
 import javax.naming.Name
 
 fun main(){
-
-
+/*
     val dataset: NamedData = mapOf(
         "rate1" to arrayOf(0.1, 0.2, 3.4, 5.5).toLD(),
         "rate2" to arrayOf(23.4, 2.3, 12.3, 0.4).toLD(),
@@ -18,14 +17,14 @@ fun main(){
         "city" to arrayOf("SPb", "Moscow", "Nizhniy", "Rostov-na-Donu").toLD(),
     )
 
-    val mainCartesianCoords = coords()
-
     val plot = plot {
         data = dataset
 
         data.add {
             "population" to arrayOf(1231241, 214124, 123123, 875).toLD()
         }
+
+        val mainCartesianCoords = coords()
 
         val commonX = scale {
             coords = mainCartesianCoords
@@ -48,6 +47,7 @@ fun main(){
 
             aes = Aes.Y
 
+            // toda name
             transform = { value ->
                 Position( value / 100.0)
             }
@@ -106,4 +106,6 @@ fun main(){
             }
         }
     }
+
+ */
 }

@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.5.31"
+    kotlin("plugin.serialization") version "1.5.31"
     java
 }
 
@@ -22,6 +23,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.jetbrains.lets-plot/lets-plot-image-export
     implementation("org.jetbrains.lets-plot:lets-plot-image-export:2.2.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
 
 }
 
