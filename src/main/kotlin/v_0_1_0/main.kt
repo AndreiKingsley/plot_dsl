@@ -10,10 +10,12 @@ import kotlinx.serialization.json.Json
 import v_0_1_0.echarts.wrapLayer
 import v_0_1_0.ir.*
 import v_0_1_0.letsplot.LayerWrapper
+import v_0_1_0.letsplot.toPlot
+import java.io.File
 
 fun main(){
     val dataset = mutableMapOf<String, List<Any>>(
-        "gdp" to listOf(28604, 31163, 1516, 44056, 43294, 13334),
+        "gdp" to listOf("x", "x", "x", "y", "y", "y"),
         "life exp." to listOf(77, 77.4, 68, 81.8, 81.7, 76.9),
 
         "population" to listOf(17096869, 27662440, 1154605773, 23968973, 35939927, 1376048943),
@@ -33,6 +35,20 @@ fun main(){
 
         set {
             "alpha" to 0.5
+        }
+
+        scaleContinuous {
+            aes = "size"
+
+            range = 7 to 17
+            domainLimits = 10000000 to 1500000000
+        }
+
+        scaleCategorical {
+            aes = "color"
+
+            categories = listOf(1990, 2015)
+            values = listOf("red", "green")
         }
     }
 
@@ -54,8 +70,14 @@ fun main(){
     ggsave(p2, "my-plot.png")
     */
 
-    println(Json.encodeToString(wrapLayer(layer)))
+    val plot = layer.toPlot()
+    ggsave(plot, "plot.png")
 
+    val json = Json {
+        explicitNulls = false
+        encodeDefaults = true
+    }
+    File("echarts/chart.json").writeText(json.encodeToString(wrapLayer(layer)))
 }
 
 inline fun points(function: SimpleLayer.() -> Unit): SimpleLayer {
@@ -78,4 +100,12 @@ inline fun SimpleLayer.map(block: MapContext<String>.() -> Unit) {
 
 inline fun SimpleLayer.set(block: MapContext<Any>.() -> Unit) {
     settings = MapContext<Any>().apply(block).innerMap
+}
+
+inline fun SimpleLayer.scaleCategorical(block: CategoricalScale.() -> Unit) {
+    scales.add(CategoricalScale().apply(block))
+}
+
+inline fun SimpleLayer.scaleContinuous(block: ContinuousScale.() -> Unit) {
+    scales.add(ContinuousScale().apply(block))
 }

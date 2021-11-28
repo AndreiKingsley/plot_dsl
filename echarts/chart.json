@@ -1,0 +1,65 @@
+{
+  "dataset": {
+    "source": [
+      [
+        "name",
+        "iq",
+        "year"
+      ],
+      [
+        "Biba",
+        "12",
+        "2011"
+      ],
+      [
+        "Boba",
+        "13",
+        "2012"
+      ],
+      [
+        "Boba",
+        "76",
+        "2021"
+      ],
+      [
+        "Biba",
+        "88",
+        "2021"
+      ]
+    ]
+  },
+  "xAxis": {
+    "type": "category"
+  },
+  "yAxis": {
+    "type": "value",
+    "min": "0",
+    "max": "100"
+  },
+  "visualMap": [
+    {
+      "type": "piecewise",
+      "show": true,
+      "dimension": 2,
+      "inRange": {
+        "color": ["red", "blue"]
+      }
+    }
+  ],
+  "series": [
+    {
+      "type": "bar",
+      "encode": {
+        "x": "name",
+        "y": "iq"
+      }
+    },
+    {
+      "type": "line",
+      "encode": {
+        "x": "name",
+        "y": "iq"
+      }
+    }
+  ]
+}

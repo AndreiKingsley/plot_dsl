@@ -70,6 +70,23 @@ fun main(){
 
  */
 
+infix fun Int.kek(a: Int): Int{
+    return 0
+}
+
+infix fun Int.scale(art: () -> Unit){
+
+}
+
+class A{
+    var a  =10
+    var b = 12
+}
+
+fun f(b: A.() -> Unit){
+
+}
+
 fun main(){
 
 }

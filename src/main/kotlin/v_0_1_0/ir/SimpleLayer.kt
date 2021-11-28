@@ -7,4 +7,6 @@ class SimpleLayer {
 
     var mappings: MutableMap<String, String> = mutableMapOf()
     var settings: MutableMap<String, Any> = mutableMapOf()
+
+    var scales: MutableList<Scale> = mutableListOf()
 }

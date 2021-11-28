@@ -1,6 +1,5 @@
-package v_0_1_0.echarts
+package v_0_1_1.echarts
 
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -20,15 +19,20 @@ data class Dataset(
 
 @Serializable
 data class Axis(
-    val type: String
+    val type: String,
+
+    val min: String? = null,
+    val max: String? = null,
+
+    val data: List<String>? = null,
 )
 
 @Serializable
 data class Series(
-    val name: String,
+  //  val name: String,
     val type: String,
     val encode: XYEncode,
-    val itemStyle: ItemStyle,
+    val itemStyle: ItemStyle? = null,
 )
 
 @Serializable
@@ -57,20 +61,6 @@ data class VisualMap(
 
 @Serializable
 data class InRange(
-    val symbolSize: List<String>? =null,
-    val color: List<String>? =null
+    val symbolSize: List<String>? = null,
+    val color: List<String>? = null
 )
-
-/*
-@Serializable
-data class DiscreteMap(
-    val show: Boolean = false
-): VisualMap()
-
-@Serializable
-data class ContinuousMap(
-    val show: Boolean = false
-): VisualMap()
-
-
- */
