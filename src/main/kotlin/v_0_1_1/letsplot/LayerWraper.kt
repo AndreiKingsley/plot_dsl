@@ -6,6 +6,7 @@ import jetbrains.letsPlot.intern.Options
 import jetbrains.letsPlot.letsPlot
 import jetbrains.letsPlot.scale.*
 import v_0_1_1.ir.models.*
+import v_0_1_1.ir.models.aes.Aes
 import v_0_1_1.ir.models.scale.*
 
 class LayerWrapper(val layer: Layer) :
@@ -30,6 +31,8 @@ fun Geom?.toLPGeom(): jetbrains.letsPlot.intern.layer.GeomOptions {
 }
 
 fun Scale.wrap(aes: Aes): jetbrains.letsPlot.intern.Scale {
+    TODO()
+    /*
     return when (this) {
         is ScaleCategorical -> {
             when (aes.name) {
@@ -58,6 +61,8 @@ fun Scale.wrap(aes: Aes): jetbrains.letsPlot.intern.Scale {
         }
         else -> TODO()
     }
+
+     */
 }
 
 fun Pair<Any, Any>?.toLP() = this?.let { (it.first as Number) to (it.second as Number) }

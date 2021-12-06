@@ -1,28 +1,32 @@
 package v_0_1_1.ir.models.scale
 
-import v_0_1_1.ir.models.Aes
+import v_0_1_1.ir.models.scale.guide.Axis
+import v_0_1_1.ir.models.scale.guide.Legend
 
-interface Scale {
-    //var aes: Aes
+sealed interface Scale
+
+sealed class PositionalScale: Scale {
+    var axis: Axis? = null
 }
 
-class ScaleContinuous : Scale {
-   // override var aes: Aes = Aes("")
-    // TODO val guide
-
-    var trans: Trans = Trans.Identity
-
-    // TODO GEOMTYPE
-    var domainLimits: Pair<Any, Any>? = null
-    var range: Pair<Any, Any>? = null
+sealed class NonPositionalScale: Scale {
+    var legend: Legend? = null
 }
 
-
-class ScaleCategorical : Scale {
-   // override var aes: Aes = Aes("")
-    // TODO val guide
-
-    var categories: List<Any> = listOf()
-    var values: List<Any> = listOf()
+class CategoricalPositionalScale<T>: PositionalScale() {
+    var categories: List<T> = listOf()
 }
 
+class ContinuousPositionalScale<T>: PositionalScale() {
+    var limits: Pair<T, T>? = null
+}
+
+class CategoricalNonPositionalScale<T, R>: PositionalScale() {
+    var categories: List<T> = listOf()
+    var values: List<R> = listOf()
+}
+
+class ContinuousNonPositionalScale<T, R>: PositionalScale() {
+    var domainLimits: Pair<T, T>? = null
+    var range: Pair<R, R>? = null
+}

@@ -1,6 +1,9 @@
 package v_0_1_1.echarts
 
 import v_0_1_1.ir.models.*
+import v_0_1_1.ir.models.aes.Aes
+import v_0_1_1.ir.models.aes.X
+import v_0_1_1.ir.models.aes.Y
 import v_0_1_1.ir.models.scale.*
 
 fun wrapData(data: NamedData): Pair<List<List<String>>, Map<String, Int>> {
@@ -31,7 +34,7 @@ fun Geom.toType(): String {
 
 fun Scale.toVisualMap(aes: Aes, dim: Int): VisualMap {
     return when (this) {
-        is ScaleCategorical -> {
+        is CategoricalNonPositionalScale<*, *> -> {
             val categoriesString = categories.map { value -> value.toString() }
             val valuesString = values.map { value -> value.toString() }
             val inRange = when (aes.name) {
@@ -47,7 +50,7 @@ fun Scale.toVisualMap(aes: Aes, dim: Int): VisualMap {
                 inRange = inRange,
             )
         }
-        is ScaleContinuous -> {
+        is ContinuousNonPositionalScale<*, *> -> {
             val min = domainLimits?.first.toString()
             val max = domainLimits?.second.toString()
             val valuesString = listOf(range?.first.toString(), range?.second.toString())
@@ -73,7 +76,7 @@ fun Scale.toVisualMap(aes: Aes, dim: Int): VisualMap {
 
 fun Scale.toAxis(): Axis {
     return when (this) {
-        is ScaleCategorical -> {
+        is CategoricalPositionalScale<*> -> {
             Axis(
                 type = "category",
                 data = if (categories.isEmpty()){
@@ -83,11 +86,11 @@ fun Scale.toAxis(): Axis {
                 }
             )
         }
-        is ScaleContinuous -> {
+        is ContinuousPositionalScale<*> -> {
             Axis(
                 type = "value",
-                min = domainLimits?.first?.toString(),
-                max = domainLimits?.second?.toString(),
+                min = limits?.first?.toString(),
+                max = limits?.second?.toString(),
             )
         }
         else -> {
@@ -99,10 +102,10 @@ fun Scale.toAxis(): Axis {
 fun Layer.toSeries(): Series{
     // TODO STYLE
     return Series(
-        type = geom!!.toType(),
+        type = geom.toType(),
         encode = XYEncode(
-            x = mappings[Aes("x")]!!,
-            y = mappings[Aes("y")]!!
+            x = mappings[X]!!.id,
+            y = mappings[Y]!!.id
         ),
     )
 }
@@ -122,7 +125,7 @@ fun Plot.toOption(): Option {
             } else if (aes.name == "y") {
                 yAxis = scale.toAxis()
             } else {
-                visualMap.add(scale.toVisualMap(aes, idToDim[layer.mappings[aes]!!]!!)) // TODO
+                visualMap.add(scale.toVisualMap(aes, idToDim[layer.mappings[aes]!!.id]!!)) // TODO
             }
         }
     }
